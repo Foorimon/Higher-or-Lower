@@ -92,11 +92,11 @@ while Playing:
     while here:
         answer = input("higher or lower \n")
         if answer == "h":
-            if (int(revealed_card) > int(hidden_card)):
+            if (int(revealed_card) < int(hidden_card)):
                 score = score + 1
                 print ("well done the hidden card was", concealed_card.card_str(), "\nyou have a score of", score,"\n")
                 here = False
-            elif (int(revealed_card) < int(hidden_card)):
+            elif (int(revealed_card) > int(hidden_card)):
                 print ("its over, the card was", concealed_card.card_str(), "\nyou had a score of", score, "now its all gone\n")
                 score = 0
                 here = False
@@ -104,11 +104,11 @@ while Playing:
                 print ("tie nobody wins")
                 here = False
         elif answer == "l":
-            if (int(revealed_card) < int(hidden_card)):
+            if (int(revealed_card) > int(hidden_card)):
                 score = score + 1
                 print ("well done the hidden card was", concealed_card.card_str(), "\nyou have a score of", score,"\n")
                 here = False
-            elif (int(revealed_card) > int(hidden_card)):
+            elif (int(revealed_card) < int(hidden_card)):
                 print ("its over, the card was", concealed_card.card_str(), "\nyou had a score of", score, "now its all gone\n")
                 score = 0
                 here = False
