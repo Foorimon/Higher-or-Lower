@@ -81,7 +81,7 @@ while Playing:
     while here:
         answer = input("higher or lower \n")
         if answer == "h":
-            if (seen_value) < int(hidden_value):
+            if (seen_value) < (hidden_value):
                 score = score + 1
                 print ("well done the hidden card was", concealed_card.card_str(), "\nyou have a score of", score,"\n")
                 here = False
@@ -92,7 +92,7 @@ while Playing:
         
  
         elif answer == "l":
-            if (seen_value) > int(hidden_value):
+            if (seen_value) > (hidden_value):
                 score = score + 1
                 print ("well done the hidden card was", concealed_card.card_str(), "\nyou have a score of", score,"\n")
                 here = False
