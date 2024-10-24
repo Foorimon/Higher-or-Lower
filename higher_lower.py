@@ -64,57 +64,90 @@ while Playing:
         print ("deck shuffled")
     print ("you draw")
     seen_card = deck.deal()
-    revealed_card = seen_card.rank
+    revealed_card_rank = seen_card.rank
+    revealed_card_suit = seen_card.suit
     print (seen_card.card_str())
     lose = False
     concealed_card = deck.deal()
-    hidden_card = concealed_card.rank
+    hidden_card_rank = concealed_card.rank
+    hidden_card_suit = seen_card.suit
     
-    if revealed_card == "A":
-        revealed_card = "1"
-    if revealed_card == "J":
-        revealed_card = "11"
-    if revealed_card == "Q":
-        revealed_card = "12"
-    if revealed_card == "K":
-        revealed_card = "13"
+    if revealed_card_rank == "A":
+        revealed_card_rank = "1"
+    if revealed_card_rank == "J":
+        revealed_card_rank = "11"
+    if revealed_card_rank == "Q":
+        revealed_card_rank = "12"
+    if revealed_card_rank == "K":
+        revealed_card_rank = "13"
 
-    if hidden_card == "A":
-        hidden_card = "1"
-    if hidden_card == "J":
-        hidden_card = "11"
-    if hidden_card == "Q":
-       hidden_card = "12"
-    if hidden_card == "K":
-        hidden_card = "13"
+    if hidden_card_rank == "A":
+        hidden_card_rank = "1"
+    if hidden_card_rank == "J":
+        hidden_card_rank = "11"
+    if hidden_card_rank == "Q":
+       hidden_card_rank = "12"
+    if hidden_card_rank == "K":
+        hidden_card_rank = "13"
+    
+    if revealed_card_suit == "♠":
+        revealed_card_suit = "1"
+    if revealed_card_suit == "♦":
+        revealed_card_suit = "2"
+    if revealed_card_suit == "♣":
+        revealed_card_suit = "3"
+    if revealed_card_suit == "♥":
+        revealed_card_suit = "4"
+
+    
+    if hidden_card_suit == "♠":
+        hidden_card_suit = "1"
+    if hidden_card_suit == "♦":
+        hidden_card_suit = "2"
+    if hidden_card_suit == "♣":
+        hidden_card_suit = "3"
+    if hidden_card_suit == "♥":
+        hidden_card_suit = "4"
         
     here = True
     while here:
         answer = input("higher or lower \n")
         if answer == "h":
-            if (int(revealed_card) < int(hidden_card)):
+            if (int(revealed_card_rank) < int(hidden_card_rank)):
                 score = score + 1
                 print ("well done the hidden card was", concealed_card.card_str(), "\nyou have a score of", score,"\n")
                 here = False
-            elif (int(revealed_card) > int(hidden_card)):
+            elif (int(revealed_card_rank) > int(hidden_card_rank)):
                 print ("its over, the card was", concealed_card.card_str(), "\nyou had a score of", score, "now its all gone\n")
                 score = 0
                 here = False
-            else:
-                print ("tie nobody wins")
+            elif (int(revealed_card_suit) < int(hidden_card_suit)):
+                score = score + 1
+                print ("well done the hidden card was", concealed_card.card_str(), "\nyou have a score of", score,"\n")
                 here = False
+            else:
+                print ("its over, the card was", concealed_card.card_str(), "\nyou had a score of", score, "now its all gone\n")
+                score = 0
+                here = False
+
         elif answer == "l":
-            if (int(revealed_card) > int(hidden_card)):
+            if (int(revealed_card_rank) > int(hidden_card_rank)):
                 score = score + 1
                 print ("well done the hidden card was", concealed_card.card_str(), "\nyou have a score of", score,"\n")
                 here = False
-            elif (int(revealed_card) < int(hidden_card)):
+            elif (int(revealed_card_rank) < int(hidden_card_rank)):
                 print ("its over, the card was", concealed_card.card_str(), "\nyou had a score of", score, "now its all gone\n")
                 score = 0
                 here = False
-            else:
-                print ("tie nobody wins\n")
+            elif (int(revealed_card_suit) > int(hidden_card_suit)):
+                score = score + 1
+                print ("well done the hidden card was", concealed_card.card_str(), "\nyou have a score of", score,"\n")
                 here = False
+            else:
+                print ("its over, the card was", concealed_card.card_str(), "\nyou had a score of", score, "now its all gone\n")
+                score = 0
+                here = False
+                
         else:
             print("its l or h im lazy\n")
         check = True
